@@ -13,15 +13,21 @@ function NarrowItDownController(MenuSearchService, $q) {
 
     nid.stext = "";
     nid.found = [];
+    nid.showFound = false;
 
     nid.narrow = function() {
         MenuSearchService.getMatchedMenuItems(nid.stext)
         .then(function(foundItems) {
             nid.found = foundItems;
+            nid.showFound = true;
         }).catch(function(error) {
             console.log("ERROR: " + error);
         });
 
+    }
+
+    nid.hideFound = function() {
+        nid.showFound = false;
     }
 
     nid.onRemove = function(index) {
@@ -49,10 +55,14 @@ function MenuSearchService($http) {
     }
 
     // actually do the matching.  Only the short_name, name,
-    // and description fields are searched.
+    // and description fields are searched.  As a special case,
+    // passing an empty or whitespace-only string for txt matches nothing.
     function doMatch(txt, data) {
         var ret = [];
-        var ltxt = txt.toLowerCase();
+        var ltxt = txt.trim().toLowerCase();
+        
+        if (ltxt == "")
+            return ret;
 
         for (var i = 0; i < data.menu_items.length; i++) {
             var d = data.menu_items[i];
@@ -73,6 +83,7 @@ function FoundItemsDirective()
         templateUrl: 'foundItems.html',
         scope: {
             found: '<',
+            showFound: '<',
             onRemove: '&'
         }
     };
