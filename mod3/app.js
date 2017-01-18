@@ -54,9 +54,9 @@ function MenuSearchService($http) {
         return promise;
     }
 
-    // actually do the matching.  Only the short_name, name,
-    // and description fields are searched.  As a special case,
-    // passing an empty or whitespace-only string for txt matches nothing.
+    // actually do the matching.  Only the description field is searched.
+    // As a special case, passing an empty or whitespace-only string for
+    // txt matches nothing.
     function doMatch(txt, data) {
         var ret = [];
         var ltxt = txt.trim().toLowerCase();
@@ -66,10 +66,7 @@ function MenuSearchService($http) {
 
         for (var i = 0; i < data.menu_items.length; i++) {
             var d = data.menu_items[i];
-            if ((d.description.toLowerCase().indexOf(ltxt) >= 0) ||
-                (d.name.toLowerCase().indexOf(ltxt) >= 0)        ||
-                (d.short_name.toLowerCase().indexOf(ltxt) >= 0)
-            )
+            if (d.description.toLowerCase().indexOf(ltxt) >= 0)
                 ret.push(d);
         }
  
