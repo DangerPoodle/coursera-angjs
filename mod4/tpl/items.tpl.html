@@ -1,0 +1,23 @@
+<h1>Items</h1>
+<table>
+    <tr>
+        <th>id</th>
+        <th>short_name</th>
+        <th>name</th>
+        <th>description</th>
+        <th>price_small</th>
+        <th>price_large</th>
+        <th>small_portion_name</th>
+        <th>large_portion_name</th>
+    </tr>
+    <tr ng-repeat="item in ic.items.menu_items">
+        <td>{{item.id}}</td>
+        <td>{{item.short_name}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.price_small}}</td>
+        <td>{{item.price_large}}</td>
+        <td>{{item.small_portion_name}}</td>
+        <td>{{item.large_portion_name}}</td>
+    </tr>
+</table>
