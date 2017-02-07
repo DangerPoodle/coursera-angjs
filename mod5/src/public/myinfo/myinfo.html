@@ -1,0 +1,55 @@
+<div ng-if="myinfoCtrl.info.saved">
+    <h1 style="color:white">My Info</h1>
+    <table>
+        <tr>
+            <td><label style="color:white">First Name</label></td>
+            <td>
+                <input readonly type="text" name="first" style="color:black"
+                       ng-model="myinfoCtrl.info.firstName">
+            </td>
+        </tr>
+
+        <tr>
+            <td><label style="color:white">Last Name</label></td>
+            <td>
+                <input readonly type="text" name="last" style="color:black"
+                       ng-model="myinfoCtrl.info.lastName">
+            </td>
+        </tr>
+
+        <tr>
+            <td><label style="color:white">Email Address</label></td>
+            <td>
+                <input readonly type="email" name="email" style="color:black"
+                       ng-model="myinfoCtrl.info.email">
+            </td>
+        </tr>
+
+        <tr>
+            <td><label style="color:white">Phone Number</label></td>
+            <td>
+                <input readonly type="text" name="phone" style="color:black"
+                       ng-model="myinfoCtrl.info.phone">
+            </td>
+        </tr>
+
+        <tr>
+            <td><label style="color:white">Favorite Dish</label></td>
+            <td>
+                <input readonly type="text" name="fav" style="color:black"
+                       ng-model="myinfoCtrl.info.fav">
+            </td>
+        </tr>
+    </table>
+    <br>
+    <img class="img-responsive" width="250" height="150"
+         ng-src="{{myinfoCtrl.basePath}}/images/{{myinfoCtrl.info.menuItem.short_name}}.jpg"
+         alt="{{myinfoCtrl.menuItem.name}}">
+    <br>
+    <h3 class="menu-item-title">{{myinfoCtrl.info.menuItem.name}}</h3>
+    <p class="menu-item-details">{{myinfoCtrl.info.menuItem.description}}</p>
+</div>
+<div ng-if="! myinfoCtrl.info.saved">
+    Not Signed Up Yet.
+    <a ui-sref="public.signup">Sign Up Now!</a>
+</div>

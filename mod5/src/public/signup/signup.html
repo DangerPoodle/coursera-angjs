@@ -1,0 +1,88 @@
+<fieldset id="signupFields">
+    <legend><h1 style="color: white">Sign Up</h1></legend>
+    <form name="signupForm" novalidate >
+        <table>
+            <tr>
+                <td><label style="color:white">First Name</label></td>
+                <td>
+                    <input type="text" name="first" placeholder="First Name"
+                           ng-model="signupCtrl.info.firstName" required>
+                    <span style="color:white"
+                          ng-if="signupForm.first.$invalid && signupForm.first.$touched">
+                        First Name field is required
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label style="color:white">Last Name</label></td>
+                <td>
+                    <input type="text" name="last" placeholder="Last Name"
+                           ng-model="signupCtrl.info.lastName" required>
+                    <span style="color:white"
+                          ng-if="signupForm.last.$invalid && signupForm.last.$touched">
+                        Last Name field is required
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label style="color:white">Email Address</label></td>
+                <td>
+                    <input type="email" name="email" placeholder="Email Address"
+                           ng-model="signupCtrl.info.email" required>
+                    <span style="color:white"
+                          ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+                        Email Address field is required
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label style="color:white">Phone Number</label></td>
+                <td>
+                    <input type="text" name="phone" placeholder="Phone Number"
+                           ng-model="signupCtrl.info.phone" required minlength="10">
+                    <span style="color:white"
+                          ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
+                        Phone Number field is required
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label style="color:white">Favorite Dish</label></td>
+                <td>
+                    <input type="text" name="fav" placeholder="Favorite Menu Number"
+                           ng-model="signupCtrl.info.fav" required minlength="2">
+                    <span style="color:white"
+                          ng-if="signupCtrl.info.favExists && signupForm.fav.$invalid && signupForm.fav.$touched">
+                        Favorite Menu Number field is required
+                    </span>
+                    <span style="color:white"
+                          ng-if="! signupCtrl.info.favExists">
+                        No such menu number exists.
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <button ng-disabled="signupForm.$invalid"
+                            ng-click="signupCtrl.save()">
+                        Submit
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</fieldset>
+
+<br>
+
+<div ng-if="signupCtrl.info.saved">
+    <h2>Your information has been saved!</h2>
+</div>
+
